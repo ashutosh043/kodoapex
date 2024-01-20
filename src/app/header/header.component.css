@@ -1,0 +1,174 @@
+/* --------------- header Css -------------  */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    z-index: 9;
+    transition: 250ms all ease-in;
+}
+
+header.fixed{
+    background-color: var(--white-color);
+}
+
+header.fixed .desktop-menu ul>li:not(:last-child)>a{
+    color: var(--black-color);
+}
+
+header.fixed .top-header{
+    transform:translateY(-49.6px);
+}
+
+
+header.fixed .kodoapex-btn{
+    color: var(--white-color);
+}
+
+header.fixed .logo img{
+   width: 50px;
+}
+
+
+.mobile-menu{
+    display: none;
+
+}
+
+.menu-list>li:hover .dropdown{
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.dropdown {
+    position: absolute;
+    top: 52px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 288px;
+    transform: translateY(40px);
+    visibility: hidden;
+    opacity: 0;
+    transition:300ms ease;
+}
+
+
+
+@media(min-width:768px){
+    
+header.fixed {
+    transform:translateY(-49.6px);
+}
+
+}
+
+
+@media(max-width:767.98px){
+    .top-header{
+      display: none;
+    }
+
+    .logo img {
+        max-width: 60px;
+    }
+
+    .mobile-menu{
+        display: block;
+    }
+
+    .desktop-menu{
+        display: none;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        background-color: var(--white-color);
+        top: 0;
+        left:-250px;
+        width: 250px;
+        height: 100%;
+        z-index: 9;
+        transition: 300ms all ease;
+    }
+
+    .mobile-menu.slide {
+        left: 0;
+    }
+
+    .backdrop_bg{
+        z-index: 6;
+    }
+
+    .backdrop_bg.show{
+          right:0;
+    }
+
+
+/* hemburger */
+
+.hemburger {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    top: -10px;
+}
+
+
+.hemburger-wrapper {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.hemburger .line{
+    width: 100%;
+    display: block;
+    height: 2px;
+    background-color: var(--white-color);
+    position: absolute;
+    transform-origin: left;
+    transition: 0.3s all ease-in;
+}
+
+header.fixed .hemburger .line{
+     background-color: var(--orange-color);
+}
+
+.hemburger .line:nth-child(1){
+    top: 0;
+}
+
+.hemburger .line:nth-child(2){
+    top: 9px;
+    opacity: 1;
+    visibility: visible;
+}
+    
+.hemburger .line:nth-child(3){
+    top: 18px;
+}
+
+.hemburger.rotate .line:nth-child(1){
+    transform: rotate(45deg);
+}
+
+.hemburger.rotate .line:nth-child(2){
+    transform: translateX(-20px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hemburger.rotate .line:nth-child(3){
+    transform: rotate(-45deg);
+}
+  
+  
+  }
+
+/* ----------- header css ---------- */
