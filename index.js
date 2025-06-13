@@ -16,7 +16,11 @@ app.get('/about', (req,res)=>{
 });
 
 app.get('/services', (req,res)=>{
-     res.render('about');
+     res.render('services');
+});
+
+app.get('/blog', (req,res)=>{
+     res.render('blog');
 });
 
 
