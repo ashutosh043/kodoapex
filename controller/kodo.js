@@ -1,6 +1,6 @@
 const express  = require('express');
 const router = express.Router();
-
+const kodoModel = require('../model/contact')
 
 
 router.get('/', (req,res)=>{
@@ -31,6 +31,31 @@ router.get('/faq', (req,res)=>{
 router.get('/blog', (req,res)=>{
    res.render("blog");
 });
+
+
+router.post('/contact', (req,res)=>{
+  
+   const firstname = req.body.firstname;
+   const lastname = req.body.lastname;
+   const company = req.body.company;
+   const email = req.body.email;
+   const phone = req.body.phone;
+   const message = req.body.message;
+
+   const sendData = kodoModel({
+      firstname,
+      lastname,
+      company,
+      email,
+      phone,
+      message
+   });
+
+   sendData.save();
+
+   res.redirect('/')
+
+})
 
 module.exports = router;
 
