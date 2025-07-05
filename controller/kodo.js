@@ -28,7 +28,7 @@ router.get('/faq', (req,res)=>{
 });
 
 
-router.get('/blog', (req,res)=>{
+router.get('/blog', express.json(), (req,res)=>{
    res.render("blog");
 });
 
@@ -51,9 +51,10 @@ router.post('/contact', (req,res)=>{
       message
    });
 
+
    sendData.save();
 
-   res.redirect('/')
+    res.json({message: 'Data saved sucessfully'})
 
 })
 

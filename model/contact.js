@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
-const validate = require('validator')
+const validate = require('validator');
+const bodyParser = require('body-parser')
 const kodoContactSchema = new mongoose.Schema({
 
     firstname:{
         type:String,
         required:true,
+        unique:true,
     },
     lastname:{
         type:String,
