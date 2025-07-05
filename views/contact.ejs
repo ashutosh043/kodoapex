@@ -103,7 +103,7 @@
                                 <h5>Make a Free Consulting</h5>
                             </div>
                             <div class="contact-form">
-                                <form action="/contact" method="post" id="form-submit">
+                                <form action="/contact" method="post"  id="form-submit">
                                     <div class="row">
                                         <div class="col-md-6 mb-20">
                                             <div class="form-inner">
@@ -166,28 +166,36 @@
         <%- include('footer') %>
             <%- include('common-js') %>
 
-                <script>
-                    let formSubmit = document.querySelector('#form-submit');
 
-                    formSubmit.addEventListener('submit', (e) => {
-                     //   e.preventDefault();
-                        let firstname = document.querySelector('#firstname').value;
-                        let lastname = document.querySelector('#lastname').value;
+ 
+            <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form-submit');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
 
-                        let company = document.querySelector('#company').value;
+        // Collect form data
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
 
-                        let email = document.querySelector('#email').value;
-                    let phone = document.querySelector('#phone').value;
-               let message = document.querySelector('#message').value;
+        // Send the data to the server
+        fetch('/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('Form submitted successfully!');
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('There was an error submitting the form.');
+        });
+    });
+});
 
-               if(firstname==='' ||  lastname===''){
-                     alert('Fill the form')
-               }
-               else{
-               alert('Form Submit Sucessfully')
-               }
-
-                    })
 
 
                 </script>
